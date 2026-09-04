@@ -147,7 +147,7 @@
 
             border: 1px solid #ddd;
 
-            border-left: 5px solid #09090a;
+            border-left: 5px solid #0b0a0b;
 
             border-radius: 8px;
         }
@@ -171,7 +171,7 @@
 
             background: linear-gradient(
                 90deg,
-                #5a5656
+                #505053
             );
 
             color: white;
@@ -631,9 +631,10 @@
         <p>
             B.Tech First Year Mini Project
         </p>
-            <div class="creator-name">
+         <div class="creator-name">
     Designed & Developed by: Pankaj Ahirwar
 </div>
+
     </footer>
 
 
@@ -932,6 +933,54 @@
                 const trainNumber = train.number;
 
                 /*
+                 * Train timing
+                 * Sample timings for this college project
+                 */
+                function getTrainTiming(from, to) {
+                    const timings = {
+                        "Ghaziabad|New Delhi": { departure: "06:30 AM", arrival: "07:15 AM" },
+                        "New Delhi|Ghaziabad": { departure: "06:00 PM", arrival: "06:45 PM" },
+                        "New Delhi|Kanpur Central": { departure: "06:00 AM", arrival: "11:00 AM" },
+                        "Kanpur Central|New Delhi": { departure: "05:30 PM", arrival: "10:30 PM" },
+                        "New Delhi|Lucknow": { departure: "06:10 AM", arrival: "12:25 PM" },
+                        "Lucknow|New Delhi": { departure: "03:30 PM", arrival: "09:45 PM" },
+                        "New Delhi|Agra Cantt": { departure: "07:10 AM", arrival: "10:05 AM" },
+                        "Agra Cantt|New Delhi": { departure: "05:00 PM", arrival: "07:55 PM" },
+                        "New Delhi|Bhopal": { departure: "06:00 AM", arrival: "02:30 PM" },
+                        "Bhopal|New Delhi": { departure: "03:30 PM", arrival: "12:00 AM" },
+                        "Ghaziabad|Kanpur Central": { departure: "06:20 AM", arrival: "11:20 AM" },
+                        "Kanpur Central|Ghaziabad": { departure: "04:30 PM", arrival: "09:30 PM" },
+                        "Ghaziabad|Lucknow": { departure: "05:50 AM", arrival: "12:15 PM" },
+                        "Lucknow|Ghaziabad": { departure: "04:00 PM", arrival: "10:25 PM" },
+                        "Ghaziabad|Agra Cantt": { departure: "07:00 AM", arrival: "10:00 AM" },
+                        "Agra Cantt|Ghaziabad": { departure: "05:15 PM", arrival: "08:15 PM" },
+                        "Ghaziabad|Bhopal": { departure: "05:45 AM", arrival: "02:15 PM" },
+                        "Bhopal|Ghaziabad": { departure: "04:00 PM", arrival: "12:30 AM" },
+                        "Kanpur Central|Lucknow": { departure: "08:00 AM", arrival: "10:00 AM" },
+                        "Lucknow|Kanpur Central": { departure: "05:00 PM", arrival: "07:00 PM" },
+                        "Kanpur Central|Agra Cantt": { departure: "07:30 AM", arrival: "12:00 PM" },
+                        "Agra Cantt|Kanpur Central": { departure: "04:30 PM", arrival: "09:00 PM" },
+                        "Kanpur Central|Bhopal": { departure: "06:00 AM", arrival: "04:00 PM" },
+                        "Bhopal|Kanpur Central": { departure: "05:00 PM", arrival: "03:00 AM" },
+                        "Lucknow|Agra Cantt": { departure: "06:30 AM", arrival: "12:00 PM" },
+                        "Agra Cantt|Lucknow": { departure: "04:00 PM", arrival: "09:30 PM" },
+                        "Lucknow|Bhopal": { departure: "07:00 AM", arrival: "05:00 PM" },
+                        "Bhopal|Lucknow": { departure: "06:00 PM", arrival: "04:00 AM" },
+                        "Agra Cantt|Bhopal": { departure: "06:30 AM", arrival: "04:30 PM" },
+                        "Bhopal|Agra Cantt": { departure: "05:30 PM", arrival: "03:30 AM" }
+                    };
+
+                    return timings[from + "|" + to] || {
+                        departure: "08:00 AM",
+                        arrival: "04:00 PM"
+                    };
+                }
+
+                const timing = getTrainTiming(from, to);
+                const departureTime = timing.departure;
+                const arrivalTime = timing.arrival;
+
+                /*
                  * Distance based simulated fare
                  * Starting fares set by project owner:
                  * SL = 350, AC 3 = 700, AC 2 = 900, AC 1 = 1100
@@ -1198,6 +1247,27 @@
 
                                 </p>
 
+                                <p>
+
+                                    <strong>
+                                        Departure Time:
+                                    </strong>
+
+                                    ${departureTime}
+
+                                </p>
+
+
+                                <p>
+
+                                    <strong>
+                                        Arrival Time:
+                                    </strong>
+
+                                    ${arrivalTime}
+
+                                </p>
+
 
                                 <p>
 
@@ -1362,6 +1432,27 @@
                             ${trainNumber}
 
                         </p>
+
+                                <p>
+
+                                    <strong>
+                                        Departure Time:
+                                    </strong>
+
+                                    ${departureTime}
+
+                                </p>
+
+
+                                <p>
+
+                                    <strong>
+                                        Arrival Time:
+                                    </strong>
+
+                                    ${arrivalTime}
+
+                                </p>
 
 
                         <p>
