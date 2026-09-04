@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Railway Ticket Booking Simulation</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #e9ecef;
+            color: #222;
+        }
+
+        /* Header */
+
+        header {
+            background: linear-gradient(
+                90deg,
+                #008cff,
+                #6a00ff,
+                #c000ff
+            );
+
+            padding: 18px 50px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* Home */
+
+        .hero {
+            min-height: 430px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+
+            background: white;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+
+            background: linear-gradient(
+                90deg,
+
+                #5c5c5d
+            );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .start-btn {
+            display: inline-block;
+
+            padding: 13px 28px;
+
+            background: #222;
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 6px;
+
+            font-weight: bold;
+        }
+
+        .start-btn:hover {
+            background: #444;
+        }
+
+
+        /* Booking Section */
+
+        .booking-section {
+            padding: 60px 20px;
+        }
+
+        .booking-card {
+            max-width: 850px;
+            margin: auto;
+
+            background: white;
+
+            padding: 35px;
+
+            border-radius: 10px;
+
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .booking-card h2 {
+            text-align: center;
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+
+        /* Form */
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .form-group {
+            flex: 1;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        input,
+        select {
+            width: 100%;
+
+            padding: 12px;
+
+            border: 1px solid #ccc;
+
+            border-radius: 5px;
+
+            font-size: 15px;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #6a00ff;
+        }
+
+
+        /* Booking Button */
+
+        .book-btn {
+            width: 100%;
+
+            padding: 14px;
+
+            border: none;
+
+            border-radius: 6px;
+
+            background: linear-gradient(
+                90deg,
+                #ff0000,
+                #ff7a00,
+                #ffd000,
+                #00a651,
+                #008cff,
+                #6a00ff,
+                #c000ff
+            );
+
+            color: white;
+
+            font-size: 17px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .book-btn:hover {
+            opacity: 0.9;
+        }
+
+
+        /* Result */
+
+        .result {
+            margin-top: 25px;
+        }
+
+
+        /* About */
+
+        .about-section {
+            padding: 60px 20px;
+
+            background: white;
+
+            text-align: center;
+        }
+
+        .about-section h2 {
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        .about-section p {
+            max-width: 750px;
+
+            margin: 10px auto;
+
+            line-height: 1.6;
+
+            color: #555;
+        }
+
+
+        /* Footer */
+
+        footer {
+            background: #222;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 25px;
+        }
+
+        footer p {
+            margin: 5px;
+        }
+
+
+        /* Mobile */
+
+        @media (max-width: 700px) {
+
+            header {
+                padding: 18px 20px;
+
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+            nav a {
+                margin: 0 8px;
+            }
+
+            .hero-content h1 {
+                font-size: 35px;
+            }
+
+            .form-row {
+                flex-direction: column;
+
+                gap: 0;
+            }
+
+            .booking-card {
+                padding: 25px 20px;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+
+    <!-- Header -->
+
+    <header>
+
+        <div class="logo">
+            Railway Ticket Booking🚂
+        </div>
+
+        <nav>
+    <a href="index.html">Home</a>
+    <a href="booking.html">Book Ticket</a>
+    <a href="about.html">About</a>
+    <a href="help.html">Help</a>
+</nav>
+    </header>
+
+
+    <!-- Home Section -->
+
+    <section id="home" class="hero">
+
+        <div class="hero-content">
+
+            <h1>
+                Railway Ticket Booking
+            </h1>
+
+            <p>
+                Railway Ticket Booking Simulation System
+            </p>
+
+            <a href="#booking" class="start-btn">
+                Book Your Ticket
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- Booking Section -->
+
+    <!-- About Section -->
+
+    <section id="about" class="about-section">
+
+        <h2>
+            About This Project
+        </h2>
+
+        <p>
+            Railway Ticket Booking Simulation is a first-year
+            web designing mini project developed using
+            HTML, CSS and JavaScript.
+        </p>
+
+        <p>
+            This project provides a simple interface for entering
+            railway journey and passenger details.
+        </p>
+
+    </section>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>
+            Railway Ticket Booking Simulation
+        </p>
+
+        <p>
+            B.Tech First Year Mini Project
+        </p>
+        <div class="creator-name">
+    Designed & Developed by: Pankaj Ahirwar
+</div>
+
+    </footer>
+
+
+<script>
+
+    document.getElementById("bookingForm").addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        // Get form values
+        let from = document.getElementById("from").value;
+        let to = document.getElementById("to").value;
+        let date = document.getElementById("date").value;
+        let travelClass = document.getElementById("travelClass").value;
+        let passengerName = document.getElementById("passengerName").value;
+        let age = document.getElementById("age").value;
+        let gender = document.getElementById("gender").value;
+        let passengers = document.getElementById("passengers").value;
+
+        // Check same stations
+        if (from === to) {
+            alert("From Station and To Station cannot be the same.");
+            return;
+        }
+
+        // Train information
+        let trainName = "Rajdhani Express";
+        let trainNumber = "12951";
+
+        // Fare according to class
+        let farePerPassenger;
+
+        if (travelClass === "Sleeper (SL)") {
+            farePerPassenger = 550;
+        }
+        else if (travelClass === "AC 3 Tier (3A)") {
+            farePerPassenger = 1200;
+        }
+        else if (travelClass === "AC 2 Tier (2A)") {
+            farePerPassenger = 1700;
+        }
+        else if (travelClass === "First AC (1A)") {
+            farePerPassenger = 2500;
+        }
+
+        // Total fare
+        let totalFare = farePerPassenger * passengers;
+
+        // Generate PNR
+        let pnr = Math.floor(1000000000 + Math.random() * 9000000000);
+
+        // Display result
+        document.getElementById("result").innerHTML = `
+
+            <div style="
+                margin-top: 30px;
+                padding: 25px;
+                border-radius: 10px;
+                background: #f8f9fa;
+                border: 2px solid #6a00ff;
+            ">
+
+                <h2 style="
+                    text-align: center;
+                    margin-bottom: 20px;
+                    color: #222;
+                ">
+                    Booking Confirmation
+                </h2>
+
+                <hr>
+
+                <p><strong>PNR Number:</strong> ${pnr}</p>
+
+                <p><strong>Train Name:</strong> ${trainName}</p>
+
+                <p><strong>Train Number:</strong> ${trainNumber}</p>
+
+                <p><strong>From:</strong> ${from}</p>
+
+                <p><strong>To:</strong> ${to}</p>
+
+                <p><strong>Journey Date:</strong> ${date}</p>
+
+                <p><strong>Passenger Name:</strong> ${passengerName}</p>
+
+                <p><strong>Age:</strong> ${age}</p>
+
+                <p><strong>Gender:</strong> ${gender}</p>
+
+                <p><strong>Class:</strong> ${travelClass}</p>
+
+                <p><strong>Number of Passengers:</strong> ${passengers}</p>
+
+                <hr>
+
+                <h3 style="
+                    text-align: center;
+                    margin-top: 15px;
+                    color: #008000;
+                ">
+                    Total Fare: ₹${totalFare}
+                </h3>
+
+                <p style="
+                    text-align: center;
+                    margin-top: 15px;
+                    color: #555;
+                ">
+                    Booking successfully generated.
+                </p>
+
+            </div>
+
+        `;
+
+    });
+
+</script>
+
+
+
+
+</body>
+</html>

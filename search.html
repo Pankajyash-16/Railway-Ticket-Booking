@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Train</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #e9ecef;
+            color: #222;
+        }
+
+        header {
+            background: linear-gradient(
+                90deg,
+                #ff0000,
+                #ff7f00,
+                #ffff00,
+                #00aa00,
+                #0088ff,
+                #4b0082
+            );
+            padding: 18px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+        }
+
+        .search-section {
+            max-width: 850px;
+            margin: 40px auto;
+            padding: 30px;
+        }
+
+        .search-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+        }
+
+        select,
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 25px;
+            padding: 13px;
+            border: none;
+            border-radius: 6px;
+            background: linear-gradient(90deg, #ff0000, #ff7f00, #0088ff, #4b0082);
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        #results {
+            margin-top: 30px;
+        }
+
+        .train-card {
+            background: white;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            border-left: 6px solid #0088ff;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .train-card h3 {
+            margin-bottom: 12px;
+        }
+
+        .train-info {
+            line-height: 1.8;
+        }
+
+        .select-btn {
+            margin-top: 15px;
+            width: auto;
+            padding: 10px 20px;
+        }
+
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 700px) {
+            header {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav a {
+                margin: 0 7px;
+            }
+
+            .search-section {
+                margin: 20px auto;
+                padding: 15px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">Railway Ticket Booking</div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="search.html">Search Train</a>
+        <a href="booking.html">Book Ticket</a>
+        <a href="about.html">About</a>
+        <a href="help.html">Help</a>
+    </nav>
+</header>
+
+
+<section class="search-section">
+
+    <div class="search-card">
+
+        <h1>🚆 Search Train</h1>
+
+        <div class="form-row">
+
+            <div>
+                <label>From Station</label>
+
+                <select id="fromStation">
+                    <option value="">Select Station</option>
+                    <option>Ghaziabad</option>
+                    <option>New Delhi</option>
+                    <option>Kanpur Central</option>
+                    <option>Lucknow</option>
+                    <option>Agra Cantt</option>
+                    <option>Bhopal</option>
+                </select>
+            </div>
+
+            <div>
+                <label>To Station</label>
+
+                <select id="toStation">
+                    <option value="">Select Station</option>
+                    <option>Ghaziabad</option>
+                    <option>New Delhi</option>
+                    <option>Kanpur Central</option>
+                    <option>Lucknow</option>
+                    <option>Agra Cantt</option>
+                    <option>Bhopal</option>
+                </select>
+            </div>
+
+        </div>
+
+
+        <div style="margin-top:20px;">
+
+            <label>Journey Date</label>
+
+            <input type="date" id="journeyDate">
+
+        </div>
+
+
+        <button onclick="searchTrains()">🔍 Search Train</button>
+
+    </div>
+
+
+    <div id="results"></div>
+
+</section>
+
+
+<footer>
+    Railway Ticket Booking Simulation | B.Tech First Year Mini Project
+    <div class="creator-name">
+    Designed & Developed by: Pankaj Ahirwar
+</div>
+</footer>
+
+
+<script>
+
+function searchTrains() {
+
+    const from = document.getElementById("fromStation").value;
+    const to = document.getElementById("toStation").value;
+    const date = document.getElementById("journeyDate").value;
+
+    const results = document.getElementById("results");
+
+    if (from === "" || to === "" || date === "") {
+        results.innerHTML =
+            "<div class='train-card'><b>Please select From, To and Journey Date.</b></div>";
+        return;
+    }
+
+    if (from === to) {
+        results.innerHTML =
+            "<div class='train-card'><b>From and To stations cannot be the same.</b></div>";
+        return;
+    }
+
+
+    const trains = [
+        {
+            name: "Intercity Express",
+            from: "Ghaziabad",
+            to: "New Delhi",
+            departure: "08:10 AM",
+            arrival: "09:20 AM",
+            duration: "1h 10m",
+            classes: "Chair Car, 2S"
+        },
+
+        {
+            name: "Delhi Passenger Express",
+            from: "Ghaziabad",
+            to: "New Delhi",
+            departure: "10:30 AM",
+            arrival: "11:40 AM",
+            duration: "1h 10m",
+            classes: "Sleeper, 3A, 2A"
+        },
+
+        {
+            name: "Shatabdi Express",
+            from: "New Delhi",
+            to: "Ghaziabad",
+            departure: "06:30 PM",
+            arrival: "07:40 PM",
+            duration: "1h 10m",
+            classes: "CC, Executive"
+        }
+    ];
+
+
+    const matchingTrains = trains.filter(train =>
+        train.from === from && train.to === to
+    );
+
+
+    if (matchingTrains.length === 0) {
+
+        results.innerHTML =
+            "<div class='train-card'><b>No sample trains found for this route.</b></div>";
+
+        return;
+    }
+
+
+    results.innerHTML = "<h2 style='margin-bottom:15px;'>Available Trains</h2>";
+
+
+    matchingTrains.forEach(train => {
+
+        results.innerHTML += `
+
+            <div class="train-card">
+
+                <h3>🚆 ${train.name}</h3>
+
+                <div class="train-info">
+
+                    <b>Route:</b>
+                    ${train.from} → ${train.to}
+                    <br>
+
+                    <b>Departure:</b>
+                    ${train.departure}
+                    <br>
+
+                    <b>Arrival:</b>
+                    ${train.arrival}
+                    <br>
+
+                    <b>Duration:</b>
+                    ${train.duration}
+                    <br>
+
+                    <b>Available Classes:</b>
+                    ${train.classes}
+
+                </div>
+
+                <button class="select-btn"
+                    onclick="selectTrain('${train.name}')">
+                    Select Train
+                </button>
+
+            </div>
+
+        `;
+    });
+}
+
+
+function selectTrain(trainName) {
+
+    alert(
+        "Selected Train: " + trainName +
+        "\n\nYou can now go to Book Ticket."
+    );
+
+}
+
+</script>
+
+</body>
+</html>

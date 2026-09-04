@@ -1,0 +1,1456 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Book Railway Ticket</title>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #e9ecef;
+            color: #222;
+        }
+
+
+        header {
+            background: linear-gradient(
+                90deg,
+                #008cff,
+                #6a00ff,
+                #c000ff
+            );
+
+            padding: 18px 50px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+
+        .booking-section {
+            min-height: 85vh;
+            padding: 60px 20px;
+        }
+
+
+        .booking-card {
+            max-width: 850px;
+            margin: auto;
+
+            background: white;
+
+            padding: 35px;
+
+            border-radius: 10px;
+
+            box-shadow:
+                0 5px 20px rgba(0, 0, 0, 0.12);
+        }
+
+
+        .booking-card h1 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+
+
+        .form-group {
+            flex: 1;
+            margin-bottom: 20px;
+        }
+
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+
+        input,
+        select {
+            width: 100%;
+
+            padding: 12px;
+
+            border: 1px solid #ccc;
+
+            border-radius: 5px;
+
+            font-size: 15px;
+        }
+
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #6a00ff;
+        }
+
+
+        .passenger-card {
+            margin-top: 20px;
+
+            padding: 20px;
+
+            background: #f8f9fa;
+
+            border: 1px solid #ddd;
+
+            border-left: 5px solid #09090a;
+
+            border-radius: 8px;
+        }
+
+
+        .passenger-card h3 {
+            margin-bottom: 18px;
+
+            color: #333;
+        }
+
+
+        .book-btn {
+            width: 100%;
+
+            padding: 14px;
+
+            border: none;
+
+            border-radius: 6px;
+
+            background: linear-gradient(
+                90deg,
+                #5a5656
+            );
+
+            color: white;
+
+            font-size: 17px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+
+        .book-btn:hover {
+            opacity: 0.9;
+        }
+
+
+        .result {
+            margin-top: 30px;
+        }
+
+
+        .booking-summary {
+            padding: 25px;
+
+            background: #f8f9fa;
+
+            border: 2px solid #6a00ff;
+
+            border-radius: 10px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .booking-summary h2 {
+            text-align: center;
+
+            margin-bottom: 20px;
+        }
+
+
+        .ticket {
+            background: white;
+
+            border: 2px solid #008cff;
+
+            border-radius: 10px;
+
+            margin-top: 25px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+
+
+        .ticket-header {
+            background: linear-gradient(
+                90deg,
+                #ff0000,
+                #ff7a00,
+                #ffd000,
+                #00a651,
+                #008cff,
+                #6a00ff,
+                #c000ff
+            );
+
+            color: white;
+
+            padding: 15px;
+
+            text-align: center;
+
+            font-size: 20px;
+
+            font-weight: bold;
+        }
+
+
+        .ticket-body {
+            padding: 20px;
+        }
+
+
+        .ticket-body p {
+            margin-bottom: 9px;
+        }
+
+
+        .ticket-footer {
+            border-top: 1px solid #ddd;
+
+            padding: 15px 20px;
+
+            background: #f8f9fa;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            flex-wrap: wrap;
+        }
+
+
+        .seat {
+            font-weight: bold;
+
+            color: #6a00ff;
+        }
+
+
+        .ticket-id {
+            font-weight: bold;
+
+            color: #008cff;
+        }
+
+
+        .total-fare {
+            text-align: center;
+
+            color: green;
+
+            margin-top: 25px;
+
+            font-size: 22px;
+        }
+
+
+        .success-message {
+            text-align: center;
+
+            color: green;
+
+            margin-top: 10px;
+
+            font-weight: bold;
+        }
+
+
+        footer {
+            background: #222;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 20px;
+        }
+
+
+        footer p {
+            margin: 5px;
+        }
+
+
+        @media (max-width: 700px) {
+
+            header {
+                padding: 18px 20px;
+
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+
+            nav a {
+                margin: 0 8px;
+            }
+
+
+            .form-row {
+                flex-direction: column;
+
+                gap: 0;
+            }
+
+
+            .booking-card {
+                padding: 25px 20px;
+            }
+
+
+            .ticket-footer {
+                flex-direction: column;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <header>
+
+        <div class="logo">
+            Railway Ticket Booking
+        </div>
+
+
+        <nav>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="booking.html">
+                Book Ticket
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+            <a href="help.html">Help</a>
+
+        </nav>
+
+    </header>
+
+
+    <section class="booking-section">
+
+
+        <div class="booking-card">
+
+
+            <h1>
+                Book Railway Ticket
+            </h1>
+
+
+            <p class="subtitle">
+                Enter your journey and passenger details
+            </p>
+
+
+            <form id="bookingForm">
+
+
+                <!-- FROM AND TO -->
+
+                <div class="form-row">
+
+
+                    <div class="form-group">
+
+                        <label>
+                            From Station
+                        </label>
+
+                        <select id="from" required>
+
+                            <option value="">
+                                Select Station
+                            </option>
+
+                            <option>
+                                New Delhi
+                            </option>
+
+                            <option>
+                                Ghaziabad
+                            </option>
+
+                            <option>
+                                Kanpur Central
+                            </option>
+
+                            <option>
+                                Lucknow
+                            </option>
+
+                            <option>
+                                Agra Cantt
+                            </option>
+
+                            <option>
+                                Bhopal
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            To Station
+                        </label>
+
+                        <select id="to" required>
+
+                            <option value="">
+                                Select Station
+                            </option>
+
+                            <option>
+                                New Delhi
+                            </option>
+
+                            <option>
+                                Ghaziabad
+                            </option>
+
+                            <option>
+                                Kanpur Central
+                            </option>
+
+                            <option>
+                                Lucknow
+                            </option>
+
+                            <option>
+                                Agra Cantt
+                            </option>
+
+                            <option>
+                                Bhopal
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- DATE AND CLASS -->
+
+                <div class="form-row">
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Journey Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="date"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Travel Class
+                        </label>
+
+                        <select
+                            id="travelClass"
+                            required
+                        >
+
+                            <option value="">
+                                Select Class
+                            </option>
+
+                            <option>
+                                Sleeper (SL)
+                            </option>
+
+                            <option>
+                                AC 3 Tier (3A)
+                            </option>
+
+                            <option>
+                                AC 2 Tier (2A)
+                            </option>
+
+                            <option>
+                                First AC (1A)
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- NUMBER OF PASSENGERS -->
+
+                <div class="form-group">
+
+                    <label>
+                        Number of Passengers
+                    </label>
+
+                    <input
+                        type="number"
+                        id="passengers"
+                        min="1"
+                        max="20"
+                        value="1"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- PASSENGER DETAILS -->
+
+                <div id="passengerDetails"></div>
+
+
+                <!-- BUTTON -->
+
+                <button
+                    type="submit"
+                    class="book-btn"
+                >
+                    Search & Book Train
+                </button>
+
+
+            </form>
+
+
+            <!-- RESULT -->
+
+            <div
+                id="result"
+                class="result"
+            ></div>
+
+
+        </div>
+
+
+    </section>
+
+
+    <footer>
+
+        <p>
+            Railway Ticket Booking Simulation
+        </p>
+
+        <p>
+            B.Tech First Year Mini Project
+        </p>
+            <div class="creator-name">
+    Designed & Developed by: Pankaj Ahirwar
+</div>
+    </footer>
+
+
+    <script>
+
+
+        /*
+         * Passenger input and container
+         */
+
+        const passengerInput =
+            document.getElementById(
+                "passengers"
+            );
+
+
+        const passengerDetails =
+            document.getElementById(
+                "passengerDetails"
+            );
+
+
+        /*
+         * Create passenger forms
+         */
+
+        function createPassengerFields() {
+
+
+            let count =
+                parseInt(
+                    passengerInput.value
+                );
+
+
+            if (
+                isNaN(count) ||
+                count < 1
+            ) {
+
+                count = 1;
+
+            }
+
+
+            if (count > 20) {
+
+                count = 20;
+
+            }
+
+
+            passengerInput.value = count;
+
+
+            passengerDetails.innerHTML = "";
+
+
+            /*
+             * Create fields for
+             * every passenger
+             */
+
+            for (
+                let i = 1;
+                i <= count;
+                i++
+            ) {
+
+
+                passengerDetails.innerHTML += `
+
+                    <div class="passenger-card">
+
+                        <h3>
+                            Passenger ${i}
+                        </h3>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Passenger Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="name${i}"
+                                placeholder="Enter passenger ${i} name"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-row">
+
+
+                            <div class="form-group">
+
+                                <label>
+                                    Age
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="age${i}"
+                                    min="1"
+                                    max="100"
+                                    placeholder="Enter age"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>
+                                    Gender
+                                </label>
+
+                                <select
+                                    id="gender${i}"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Select Gender
+                                    </option>
+
+                                    <option>
+                                        Male
+                                    </option>
+
+                                    <option>
+                                        Female
+                                    </option>
+
+                                    <option>
+                                        Other
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+                `;
+
+            }
+
+        }
+
+
+        /*
+         * Create first passenger
+         * form when page opens
+         */
+
+        createPassengerFields();
+
+
+        /*
+         * Create new passenger
+         * fields when number changes
+         */
+
+        passengerInput.addEventListener(
+            "change",
+            createPassengerFields
+        );
+
+
+        /*
+         * Booking form
+         */
+
+        document
+        .getElementById("bookingForm")
+        .addEventListener(
+            "submit",
+            function(event) {
+
+
+                event.preventDefault();
+
+
+                /*
+                 * Journey details
+                 */
+
+                const from =
+                    document
+                    .getElementById("from")
+                    .value;
+
+
+                const to =
+                    document
+                    .getElementById("to")
+                    .value;
+
+
+                const date =
+                    document
+                    .getElementById("date")
+                    .value;
+
+
+                const travelClass =
+                    document
+                    .getElementById(
+                        "travelClass"
+                    )
+                    .value;
+
+
+                const passengerCount =
+                    parseInt(
+                        document
+                        .getElementById(
+                            "passengers"
+                        )
+                        .value
+                    );
+
+
+                /*
+                 * Check stations
+                 */
+
+                if (from === to) {
+
+                    alert(
+                        "From Station and To Station cannot be the same."
+                    );
+
+                    return;
+
+                }
+
+
+                /*
+                 * Select train automatically from route
+                 * Sample data for this college project
+                 */
+                function getTrainDetails(from, to) {
+                    const routes = {
+                        "Ghaziabad|New Delhi": { name: "Ghaziabad Intercity Express", number: "14001" },
+                        "New Delhi|Ghaziabad": { name: "New Delhi Intercity Express", number: "14002" },
+                        "New Delhi|Kanpur Central": { name: "Kanpur Shatabdi Express", number: "12034" },
+                        "Kanpur Central|New Delhi": { name: "Kanpur Shatabdi Express", number: "12033" },
+                        "New Delhi|Lucknow": { name: "Lucknow Shatabdi Express", number: "12004" },
+                        "Lucknow|New Delhi": { name: "Lucknow Shatabdi Express", number: "12003" },
+                        "New Delhi|Agra Cantt": { name: "Taj Express", number: "12280" },
+                        "Agra Cantt|New Delhi": { name: "Taj Express", number: "12279" },
+                        "New Delhi|Bhopal": { name: "Bhopal Shatabdi Express", number: "12001" },
+                        "Bhopal|New Delhi": { name: "Bhopal Shatabdi Express", number: "12002" },
+                        "Ghaziabad|Kanpur Central": { name: "Ganga Yamuna Express", number: "12401" },
+                        "Kanpur Central|Ghaziabad": { name: "Ganga Yamuna Express", number: "12402" },
+                        "Ghaziabad|Lucknow": { name: "Awadh Express", number: "15001" },
+                        "Lucknow|Ghaziabad": { name: "Awadh Express", number: "15002" },
+                        "Ghaziabad|Agra Cantt": { name: "Agra Intercity Express", number: "14201" },
+                        "Agra Cantt|Ghaziabad": { name: "Agra Intercity Express", number: "14202" },
+                        "Ghaziabad|Bhopal": { name: "Narmada Express", number: "18233" },
+                        "Bhopal|Ghaziabad": { name: "Narmada Express", number: "18234" },
+                        "Kanpur Central|Lucknow": { name: "Kanpur Lucknow Intercity", number: "12179" },
+                        "Lucknow|Kanpur Central": { name: "Kanpur Lucknow Intercity", number: "12180" },
+                        "Kanpur Central|Agra Cantt": { name: "Gomti Express", number: "12419" },
+                        "Agra Cantt|Kanpur Central": { name: "Gomti Express", number: "12420" },
+                        "Kanpur Central|Bhopal": { name: "Bundelkhand Express", number: "11107" },
+                        "Bhopal|Kanpur Central": { name: "Bundelkhand Express", number: "11108" },
+                        "Lucknow|Agra Cantt": { name: "Lucknow Agra Express", number: "12179" },
+                        "Agra Cantt|Lucknow": { name: "Lucknow Agra Express", number: "12180" },
+                        "Lucknow|Bhopal": { name: "Lucknow Bhopal Express", number: "12511" },
+                        "Bhopal|Lucknow": { name: "Lucknow Bhopal Express", number: "12512" },
+                        "Agra Cantt|Bhopal": { name: "Agra Bhopal Express", number: "12198" },
+                        "Bhopal|Agra Cantt": { name: "Agra Bhopal Express", number: "12197" }
+                    };
+
+                    const key = from + "|" + to;
+                    return routes[key] || {
+                        name: from + " - " + to + " Express",
+                        number: "13001"
+                    };
+                }
+
+                const train = getTrainDetails(from, to);
+                const trainName = train.name;
+                const trainNumber = train.number;
+
+                /*
+                 * Distance based simulated fare
+                 * Starting fares set by project owner:
+                 * SL = 350, AC 3 = 700, AC 2 = 900, AC 1 = 1100
+                 */
+
+                const distanceMap = {
+                    "New Delhi|Ghaziabad": 25,
+                    "Ghaziabad|New Delhi": 25,
+                    "New Delhi|Agra Cantt": 195,
+                    "Agra Cantt|New Delhi": 195,
+                    "New Delhi|Kanpur Central": 440,
+                    "Kanpur Central|New Delhi": 440,
+                    "New Delhi|Lucknow": 510,
+                    "Lucknow|New Delhi": 510,
+                    "New Delhi|Bhopal": 700,
+                    "Bhopal|New Delhi": 700,
+                    "Ghaziabad|Agra Cantt": 170,
+                    "Agra Cantt|Ghaziabad": 170,
+                    "Ghaziabad|Kanpur Central": 415,
+                    "Kanpur Central|Ghaziabad": 415,
+                    "Ghaziabad|Lucknow": 485,
+                    "Lucknow|Ghaziabad": 485,
+                    "Ghaziabad|Bhopal": 675,
+                    "Bhopal|Ghaziabad": 675,
+                    "Agra Cantt|Kanpur Central": 290,
+                    "Kanpur Central|Agra Cantt": 290,
+                    "Agra Cantt|Lucknow": 340,
+                    "Lucknow|Agra Cantt": 340,
+                    "Agra Cantt|Bhopal": 500,
+                    "Bhopal|Agra Cantt": 500,
+                    "Kanpur Central|Lucknow": 90,
+                    "Lucknow|Kanpur Central": 90,
+                    "Kanpur Central|Bhopal": 650,
+                    "Bhopal|Kanpur Central": 650,
+                    "Lucknow|Bhopal": 600,
+                    "Bhopal|Lucknow": 600
+                };
+
+                const routeKey = from + "|" + to;
+                const distance = distanceMap[routeKey] || 500;
+
+                let startingFare;
+                let distanceCharge;
+
+                if (travelClass === "Sleeper (SL)") {
+                    startingFare = 350;
+                    distanceCharge = 100;
+                }
+                else if (travelClass === "AC 3 Tier (3A)") {
+                    startingFare = 700;
+                    distanceCharge = 125;
+                }
+                else if (travelClass === "AC 2 Tier (2A)") {
+                    startingFare = 900;
+                    distanceCharge = 150;
+                }
+                else {
+                    startingFare = 1100;
+                    distanceCharge = 200;
+                }
+
+                /*
+                 * Every extra 100 km increases the fare.
+                 * The minimum fare always remains the starting fare.
+                 */
+                const distanceBlocks = Math.max(0, Math.ceil((distance - 50) / 100));
+                const farePerPassenger = startingFare + (distanceBlocks * distanceCharge);
+
+
+                /*
+                 * Total fare
+                 */
+
+                const totalFare =
+                    farePerPassenger *
+                    passengerCount;
+
+
+                /*
+                 * One PNR for
+                 * complete booking
+                 */
+
+                const pnr =
+                    Math.floor(
+                        1000000000 +
+                        Math.random() *
+                        9000000000
+                    );
+
+
+                /*
+                 * Generate all tickets
+                 */
+
+                let allTickets = "";
+
+
+                for (
+                    let i = 1;
+                    i <= passengerCount;
+                    i++
+                ) {
+
+
+                    /*
+                     * Passenger details
+                     */
+
+                    const name =
+                        document
+                        .getElementById(
+                            `name${i}`
+                        )
+                        .value
+                        .trim();
+
+
+                    const age =
+                        document
+                        .getElementById(
+                            `age${i}`
+                        )
+                        .value;
+
+
+                    const gender =
+                        document
+                        .getElementById(
+                            `gender${i}`
+                        )
+                        .value;
+
+
+                    /*
+                     * Different seat
+                     */
+
+                    let seatPrefix = "S1";
+
+
+                    if (
+                        travelClass ===
+                        "AC 3 Tier (3A)"
+                    ) {
+
+                        seatPrefix = "B1";
+
+                    }
+
+                    else if (
+                        travelClass ===
+                        "AC 2 Tier (2A)"
+                    ) {
+
+                        seatPrefix = "A1";
+
+                    }
+
+                    else if (
+                        travelClass ===
+                        "First AC (1A)"
+                    ) {
+
+                        seatPrefix = "H1";
+
+                    }
+
+
+                    const seatNumber =
+                        seatPrefix +
+                        "-" +
+                        String(i)
+                        .padStart(2, "0");
+
+
+                    /*
+                     * Unique ticket ID
+                     */
+
+                    const ticketId =
+                        "TKT" +
+                        Date.now() +
+                        i;
+
+
+                    /*
+                     * Create separate ticket
+                     */
+
+                    allTickets += `
+
+                        <div class="ticket">
+
+
+                            <div class="ticket-header">
+
+                                Railway Ticket
+
+                            </div>
+
+
+                            <div class="ticket-body">
+
+
+                                <p>
+
+                                    <strong>
+                                        Ticket:
+                                    </strong>
+
+                                    ${i}
+                                    of
+                                    ${passengerCount}
+
+                                </p>
+
+
+                                <p>
+
+                                    <strong>
+                                        Ticket ID:
+                                    </strong>
+
+                                    <span class="ticket-id">
+                                        ${ticketId}
+                                    </span>
+
+                                </p>
+
+
+                                <p>
+
+                                    <strong>
+                                        PNR Number:
+                                    </strong>
+
+                                    ${pnr}
+
+                                </p>
+
+
+                                <hr>
+
+
+                                <p>
+
+                                    <strong>
+                                        Train:
+                                    </strong>
+
+                                    ${trainName}
+
+                                </p>
+
+
+                                <p>
+
+                                    <strong>
+                                        Train Number:
+                                    </strong>
+
+                                    ${trainNumber}
+
+                                </p>
+
+
+                                <p>
+
+                                    <strong>
+                                        From:
+                                    </strong>
+
+                                    ${from}
+
+                                </p>
+
+
+                                <p>
+
+                                    <strong>
+                                        To:
+                                    </strong>
+
+                                    ${to}
+
+                                </p>
+
+
+                                <p>
+
+                                    <strong>
+                                        Journey Date:
+                                    </strong>
+
+                                    ${date}
+
+                                </p>
+
+
+                                <p>
+
+                                    <strong>
+                                        Class:
+                                    </strong>
+
+                                    ${travelClass}
+
+                                </p>
+
+
+                                <hr>
+
+
+                                <p>
+
+                                    <strong>
+                                        Passenger Name:
+                                    </strong>
+
+                                    ${name}
+
+                                </p>
+
+
+                                <p>
+
+                                    <strong>
+                                        Age:
+                                    </strong>
+
+                                    ${age}
+
+                                </p>
+
+
+                                <p>
+
+                                    <strong>
+                                        Gender:
+                                    </strong>
+
+                                    ${gender}
+
+                                </p>
+
+
+                            </div>
+
+
+                            <div class="ticket-footer">
+
+
+                                <span class="seat">
+
+                                    Seat:
+                                    ${seatNumber}
+
+                                </span>
+
+
+                                <span>
+
+                                    Fare:
+                                    ₹${farePerPassenger}
+
+                                </span>
+
+
+                            </div>
+
+
+                        </div>
+
+                    `;
+
+                }
+
+
+                /*
+                 * Show complete booking
+                 */
+
+                document
+                .getElementById("result")
+                .innerHTML = `
+
+
+                    <div class="booking-summary">
+
+
+                        <h2>
+                            Booking Confirmed
+                        </h2>
+
+
+                        <hr>
+
+
+                        <p>
+
+                            <strong>
+                                PNR Number:
+                            </strong>
+
+                            ${pnr}
+
+                        </p>
+
+
+                        <p>
+
+                            <strong>
+                                Train:
+                            </strong>
+
+                            ${trainName}
+
+                        </p>
+
+
+                        <p>
+
+                            <strong>
+                                Train Number:
+                            </strong>
+
+                            ${trainNumber}
+
+                        </p>
+
+
+                        <p>
+
+                            <strong>
+                                From:
+                            </strong>
+
+                            ${from}
+
+                        </p>
+
+
+                        <p>
+
+                            <strong>
+                                To:
+                            </strong>
+
+                            ${to}
+
+                        </p>
+
+
+                        <p>
+
+                            <strong>
+                                Journey Date:
+                            </strong>
+
+                            ${date}
+
+                        </p>
+
+
+                        <p>
+
+                            <strong>
+                                Class:
+                            </strong>
+
+                            ${travelClass}
+
+                        </p>
+
+
+                        <p>
+
+                            <strong>
+                                Total Tickets:
+                            </strong>
+
+                            ${passengerCount}
+
+                        </p>
+
+
+                    </div>
+
+
+                    ${allTickets}
+
+
+                    <h2 class="total-fare">
+
+                        Total Fare:
+                        ₹${totalFare}
+
+                    </h2>
+
+
+                    <p class="success-message">
+
+                        ${passengerCount}
+                        ticket(s) generated successfully.
+
+                    </p>
+
+
+                `;
+
+
+            }
+        );
+
+
+    </script>
+
+
+</body>
+
+</html>
