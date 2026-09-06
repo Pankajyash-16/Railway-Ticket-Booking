@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -159,7 +160,239 @@
                 font-size: 26px;
             }
         }
-    </style>
+    
+/* ===== PREMIUM HELP PAGE DESIGN ===== */
+/* Header intentionally left unchanged */
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background:
+        radial-gradient(circle at 10% 10%, rgba(255,255,255,.95), transparent 32%),
+        linear-gradient(135deg, #eef1f4 0%, #dfe3e7 48%, #f4f5f6 100%);
+    color: #20242a;
+}
+
+/* Main area */
+.help-section {
+    min-height: 85vh;
+    padding: 58px 22px 70px;
+    position: relative;
+}
+
+.help-section::before {
+    content: "";
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    width: 180px;
+    height: 180px;
+    transform: translateX(-50%);
+    background: rgba(255,255,255,.55);
+    filter: blur(55px);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.help-card {
+    position: relative;
+    max-width: 1050px;
+    margin: auto;
+    padding: 42px;
+    background: rgba(255,255,255,.88);
+    border: 1px solid rgba(255,255,255,.95);
+    border-radius: 24px;
+    box-shadow:
+        0 20px 55px rgba(35, 40, 46, .13),
+        0 3px 12px rgba(35, 40, 46, .06);
+    backdrop-filter: blur(10px);
+}
+
+/* Page heading */
+.help-card h1 {
+    position: relative;
+    margin-bottom: 8px;
+    font-size: 36px;
+    letter-spacing: -.8px;
+    color: #171a1f;
+}
+
+.help-card h1::after {
+    content: "";
+    display: block;
+    width: 58px;
+    height: 4px;
+    margin: 15px auto 0;
+    border-radius: 20px;
+    background: #30343a;
+}
+
+.subtitle {
+    margin: 16px 0 38px;
+    color: #737981;
+    font-size: 15px;
+    letter-spacing: .2px;
+}
+
+/* Help boxes */
+.help-box {
+    position: relative;
+    margin-bottom: 18px;
+    padding: 25px 27px 24px 30px;
+    background: #f7f8f9;
+    border: 1px solid #e3e6e9;
+    border-left: 5px solid #34383e;
+    border-radius: 16px;
+    box-shadow: 0 7px 20px rgba(35,40,46,.055);
+    transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+
+.help-box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 13px 28px rgba(35,40,46,.10);
+    border-color: #d0d4d8;
+}
+
+.help-box h2 {
+    margin-bottom: 12px;
+    font-size: 20px;
+    line-height: 1.3;
+    color: #20242a;
+    letter-spacing: -.2px;
+}
+
+.help-box h2::before {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin: 0 10px 3px 0;
+    border-radius: 50%;
+    background: #4b5057;
+}
+
+.help-box p,
+.help-box ul {
+    color: #555b62;
+    font-size: 15px;
+}
+
+.help-box p {
+    line-height: 1.75;
+}
+
+.help-box ul {
+    padding-left: 23px;
+    margin-top: 12px;
+    line-height: 1.9;
+}
+
+.help-box li {
+    padding-left: 4px;
+}
+
+.help-box li::marker {
+    color: #555a61;
+}
+
+.help-box b {
+    color: #292e34;
+}
+
+/* Important box */
+.help-box.important {
+    border-left: 5px solid #25292e;
+    background: linear-gradient(135deg, #f0f1f2, #fafafa);
+    border-color: #d5d8db;
+}
+
+.help-box.important h2::before {
+    background: #25292e;
+}
+
+/* Different visual hierarchy for sections */
+.help-box:nth-of-type(1),
+.help-box:nth-of-type(5),
+.help-box:nth-of-type(10) {
+    background: #ffffff;
+}
+
+.help-box:nth-of-type(4) {
+    background: linear-gradient(135deg, #f5f6f7, #ffffff);
+}
+
+/* Footer creator */
+.creator-name {
+    margin-top: 14px;
+    padding-top: 11px;
+    border-top: 1px solid #4b4b4b;
+    font-size: 15px;
+    color: #e4e4e4;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+    .help-section {
+        padding: 32px 13px 45px;
+    }
+
+    .help-card {
+        padding: 27px 15px;
+        border-radius: 19px;
+    }
+
+    .help-card h1 {
+        font-size: 29px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+        margin-bottom: 27px;
+    }
+
+    .help-box {
+        padding: 20px 17px 19px 20px;
+        margin-bottom: 14px;
+        border-radius: 14px;
+    }
+
+    .help-box h2 {
+        font-size: 18px;
+    }
+
+    .help-box p,
+    .help-box ul {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 420px) {
+    .help-card h1 {
+        font-size: 25px;
+    }
+
+    .help-box {
+        padding: 18px 14px 18px 17px;
+    }
+
+    .help-box h2 {
+        font-size: 17px;
+    }
+}
+
+    
+/* Most Important Section - Red Highlight */
+.help-box.important, .important, .important-box {
+  border: 2px solid #c62828 !important;
+  background: #fff5f5 !important;
+  box-shadow: 0 8px 22px rgba(198, 40, 40, 0.14) !important;
+}
+.help-box.important h3, .important h3, .important-box h3 {
+  color: #b71c1c !important;
+}
+.help-box.important li::marker, .important li::marker, .important-box li::marker {
+  color: #c62828 !important;
+}
+</style>
 </head>
 
 <body>
@@ -168,7 +401,7 @@
     <header>
 
         <div class="logo">
-            Railway Ticket Booking
+            Railway Ticket Booking🚂
         </div>
 
         <nav>

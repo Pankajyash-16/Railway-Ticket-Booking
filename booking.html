@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -318,7 +319,7 @@
 
 
         footer {
-            background: #222;
+            background: #1a1a1b;
 
             color: white;
 
@@ -366,6 +367,849 @@
             }
 
         }
+        
+    
+/* ===== PREMIUM BOOKING PAGE DESIGN ===== */
+:root{
+    --navy:#111827;
+    --navy-2:#1f2937;
+    --slate:#64748b;
+    --line:#e2e8f0;
+    --soft:#f8fafc;
+    --white:#ffffff;
+    --accent:#2563eb;
+    --accent-dark:#1d4ed8;
+    --success:#15803d;
+    --shadow:0 18px 45px rgba(15,23,42,.10);
+    --shadow-soft:0 8px 24px rgba(15,23,42,.07);
+}
+
+body{
+    background:
+        radial-gradient(circle at 8% 12%, rgba(37,99,235,.07), transparent 26%),
+        radial-gradient(circle at 92% 30%, rgba(15,23,42,.05), transparent 28%),
+        #eef2f6;
+    color:#172033;
+    line-height:1.5;
+}
+
+.booking-section{
+    min-height:calc(100vh - 90px);
+    padding:58px 20px 72px;
+    position:relative;
+}
+
+.booking-section::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    height:5px;
+    background:linear-gradient(90deg,#111827,#334155,#2563eb,#111827);
+}
+
+.booking-card{
+    max-width:1000px;
+    padding:0;
+    background:rgba(255,255,255,.97);
+    border:1px solid rgba(226,232,240,.95);
+    border-radius:24px;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+}
+
+.booking-card > h1{
+    margin:0;
+    padding:34px 40px 8px;
+    font-size:32px;
+    letter-spacing:-.7px;
+    color:var(--navy);
+}
+
+.booking-card > .subtitle{
+    margin:0;
+    padding:0 40px 30px;
+    color:var(--slate);
+    font-size:15px;
+}
+
+#bookingForm{
+    padding:0 40px 40px;
+}
+
+#bookingForm::before{
+    content:"JOURNEY DETAILS";
+    display:block;
+    margin:0 -40px 26px;
+    padding:15px 40px;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    background:#f8fafc;
+    color:#475569;
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:1.6px;
+}
+
+.form-row{
+    gap:22px;
+}
+
+.form-group{
+    margin-bottom:22px;
+}
+
+label{
+    color:#334155;
+    font-size:13px;
+    font-weight:800;
+    letter-spacing:.2px;
+}
+
+input,select{
+    padding:14px 15px;
+    border:1px solid #d6dee8;
+    border-radius:12px;
+    background:#fff;
+    color:#172033;
+    box-shadow:0 2px 5px rgba(15,23,42,.025);
+    transition:border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+
+input:hover,select:hover{
+    border-color:#b8c4d4;
+}
+
+input:focus,select:focus{
+    border-color:var(--accent);
+    box-shadow:0 0 0 4px rgba(37,99,235,.10);
+    transform:translateY(-1px);
+}
+
+.passenger-card{
+    margin-top:18px;
+    padding:24px;
+    background:linear-gradient(145deg,#ffffff,#f8fafc);
+    border:1px solid #e2e8f0;
+    border-left:4px solid var(--accent);
+    border-radius:16px;
+    box-shadow:var(--shadow-soft);
+    position:relative;
+    overflow:hidden;
+    transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+
+.passenger-card::after{
+    content:"";
+    position:absolute;
+    width:100px;
+    height:100px;
+    right:-45px;
+    top:-45px;
+    border-radius:50%;
+    background:rgba(37,99,235,.05);
+}
+
+.passenger-card:hover{
+    transform:translateY(-2px);
+    box-shadow:0 14px 30px rgba(15,23,42,.10);
+}
+
+.passenger-card h3{
+    margin:0 0 20px;
+    color:var(--navy);
+    font-size:18px;
+    position:relative;
+    z-index:1;
+}
+
+.passenger-card h3::before{
+    content:"";
+    display:inline-block;
+    width:7px;
+    height:7px;
+    margin:0 9px 3px 0;
+    border-radius:50%;
+    background:var(--accent);
+}
+
+.book-btn{
+    margin-top:8px;
+    padding:16px 20px;
+    border-radius:13px;
+    background:linear-gradient(135deg,var(--navy),#263449);
+    box-shadow:0 10px 22px rgba(15,23,42,.18);
+    letter-spacing:.2px;
+    transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.book-btn:hover{
+    opacity:1;
+    background:linear-gradient(135deg,#172033,var(--accent-dark));
+    transform:translateY(-2px);
+    box-shadow:0 14px 28px rgba(15,23,42,.22);
+}
+
+.book-btn:active{
+    transform:translateY(0);
+}
+
+.result{
+    margin:0;
+    padding:0 40px 42px;
+}
+
+.booking-summary{
+    padding:26px;
+    background:linear-gradient(145deg,#f8fafc,#ffffff);
+    border:1px solid #dbe4ef;
+    border-radius:18px;
+    box-shadow:var(--shadow-soft);
+    margin-bottom:26px;
+}
+
+.booking-summary h2{
+    margin-bottom:18px;
+    color:var(--navy);
+    font-size:24px;
+}
+
+.booking-summary p{
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    padding:9px 0;
+    border-bottom:1px dashed #e2e8f0;
+    color:#475569;
+}
+
+.booking-summary p:last-child{
+    border-bottom:0;
+}
+
+.booking-summary strong{
+    color:#1e293b;
+}
+
+.ticket{
+    margin-top:20px;
+    border:1px solid #d9e2ec;
+    border-radius:18px;
+    box-shadow:var(--shadow-soft);
+    overflow:hidden;
+    transition:transform .2s ease, box-shadow .2s ease;
+}
+
+.ticket:hover{
+    transform:translateY(-2px);
+    box-shadow:0 15px 32px rgba(15,23,42,.10);
+}
+
+.ticket-header{
+    background:linear-gradient(135deg,#111827,#334155);
+    padding:17px 22px;
+    text-align:left;
+    font-size:18px;
+    letter-spacing:.3px;
+    position:relative;
+}
+
+.ticket-header::after{
+    content:"";
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    height:3px;
+    background:#2563eb;
+}
+
+.ticket-body{
+    padding:23px;
+    background:#fff;
+}
+
+.ticket-body p{
+    margin-bottom:10px;
+    color:#475569;
+}
+
+.ticket-body strong{
+    color:#1e293b;
+}
+
+.ticket-body hr{
+    border:0;
+    border-top:1px dashed #dbe3ed;
+    margin:17px 0;
+}
+
+.ticket-footer{
+    padding:16px 22px;
+    background:#f8fafc;
+    border-top:1px solid #e5eaf0;
+}
+
+.seat{
+    color:var(--accent);
+    background:#eff6ff;
+    border:1px solid #dbeafe;
+    padding:7px 12px;
+    border-radius:9px;
+}
+
+.ticket-id{
+    color:#334155;
+    font-family:monospace;
+}
+
+.total-fare{
+    margin:25px 0 8px;
+    padding:18px;
+    color:#166534;
+    background:#f0fdf4;
+    border:1px solid #bbf7d0;
+    border-radius:14px;
+    font-size:24px;
+}
+
+.success-message{
+    margin-top:10px;
+    color:var(--success);
+    font-size:14px;
+}
+
+footer{
+    border-top:1px solid #2b3139;
+}
+
+.creator-name{
+    margin-top:15px;
+    padding-top:10px;
+    border-top:1px solid #3b4149;
+    text-align:center;
+    font-size:15px;
+    color:#fff;
+}
+
+@media (max-width:700px){
+    .booking-section{
+        padding:34px 12px 45px;
+    }
+
+    .booking-card{
+        border-radius:18px;
+    }
+
+    .booking-card > h1{
+        padding:26px 20px 7px;
+        font-size:25px;
+    }
+
+    .booking-card > .subtitle{
+        padding:0 20px 23px;
+        font-size:14px;
+    }
+
+    #bookingForm{
+        padding:0 20px 28px;
+    }
+
+    #bookingForm::before{
+        margin:0 -20px 22px;
+        padding:13px 20px;
+        font-size:11px;
+    }
+
+    .form-row{
+        flex-direction:column;
+        gap:0;
+    }
+
+    .passenger-card{
+        padding:19px;
+    }
+
+    .result{
+        padding:0 20px 30px;
+    }
+
+    .booking-summary{
+        padding:20px;
+    }
+
+    .booking-summary p{
+        flex-direction:column;
+        gap:2px;
+    }
+
+    .ticket-body{
+        padding:20px;
+    }
+
+    .ticket-footer{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .total-fare{
+        font-size:21px;
+    }
+}
+
+    
+/* ===== PREMIUM GREY BOOKING SECTION ===== */
+.booking-section {
+    position: relative;
+    min-height: 85vh;
+    padding: 72px 20px 85px;
+    background:
+        radial-gradient(circle at 15% 10%, rgba(255,255,255,.95), transparent 30%),
+        radial-gradient(circle at 85% 85%, rgba(148,163,184,.18), transparent 32%),
+        linear-gradient(135deg, #eef0f2 0%, #d9dde1 48%, #f5f6f7 100%);
+    overflow: hidden;
+}
+
+.booking-section::before,
+.booking-section::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.booking-section::before {
+    width: 260px;
+    height: 260px;
+    top: -100px;
+    right: -80px;
+    background: rgba(71,85,105,.08);
+    box-shadow: 0 0 0 35px rgba(71,85,105,.035), 0 0 0 70px rgba(71,85,105,.02);
+}
+
+.booking-section::after {
+    width: 180px;
+    height: 180px;
+    bottom: -75px;
+    left: -55px;
+    background: rgba(100,116,139,.08);
+}
+
+.booking-card {
+    position: relative;
+    z-index: 1;
+    max-width: 920px;
+    margin: auto;
+    padding: 42px;
+    background: rgba(255,255,255,.94);
+    border: 1px solid rgba(255,255,255,.95);
+    border-radius: 24px;
+    box-shadow: 0 24px 60px rgba(15,23,42,.14), 0 4px 14px rgba(15,23,42,.07);
+    backdrop-filter: blur(10px);
+}
+
+.booking-card::before {
+    content: "JOURNEY DETAILS";
+    display: block;
+    width: fit-content;
+    margin: 0 auto 12px;
+    padding: 6px 13px;
+    border: 1px solid #d1d5db;
+    border-radius: 999px;
+    background: #f3f4f6;
+    color: #4b5563;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.booking-card h1 {
+    color: #111827;
+    font-size: clamp(28px, 4vw, 38px);
+    letter-spacing: -.7px;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: #6b7280;
+    margin-bottom: 34px;
+}
+
+.form-group label {
+    color: #374151;
+    font-size: 14px;
+    letter-spacing: .2px;
+}
+
+input, select {
+    padding: 14px 15px;
+    border: 1px solid #d1d5db;
+    border-radius: 12px;
+    background: #f9fafb;
+    color: #1f2937;
+    transition: border-color .2s ease, box-shadow .2s ease, background .2s ease, transform .2s ease;
+}
+
+input:hover, select:hover {
+    border-color: #9ca3af;
+    background: #fff;
+}
+
+input:focus, select:focus {
+    border-color: #6b7280;
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(107,114,128,.12);
+}
+
+.passenger-card {
+    position: relative;
+    margin-top: 22px;
+    padding: 24px;
+    background: linear-gradient(145deg, #f9fafb, #eef0f2);
+    border: 1px solid #d7dbe0;
+    border-left: 4px solid #4b5563;
+    border-radius: 17px;
+    box-shadow: 0 8px 22px rgba(31,41,55,.07);
+}
+
+.passenger-card h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #1f2937;
+    margin-bottom: 20px;
+}
+
+.passenger-card h3::before {
+    content: "";
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #4b5563;
+    box-shadow: 0 0 0 5px rgba(75,85,99,.10);
+}
+
+.book-btn {
+    margin-top: 12px;
+    padding: 16px 20px;
+    border-radius: 13px;
+    background: linear-gradient(135deg, #1f2937, #4b5563);
+    border: 1px solid #111827;
+    box-shadow: 0 10px 22px rgba(31,41,55,.20);
+    letter-spacing: .2px;
+    transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+}
+
+.book-btn:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+    box-shadow: 0 15px 28px rgba(31,41,55,.26);
+    filter: brightness(1.05);
+}
+
+.book-btn:active {
+    transform: translateY(0);
+}
+
+.result {
+    margin-top: 34px;
+}
+
+.booking-summary {
+    padding: 25px;
+    background: linear-gradient(145deg, #f8fafc, #e5e7eb);
+    border: 1px solid #cbd5e1;
+    border-top: 4px solid #4b5563;
+    border-radius: 17px;
+    box-shadow: 0 10px 24px rgba(15,23,42,.08);
+}
+
+.booking-summary h2 {
+    color: #1f2937;
+}
+
+.ticket {
+    border: 1px solid #cbd5e1;
+    border-radius: 18px;
+    box-shadow: 0 12px 28px rgba(15,23,42,.10);
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.ticket:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 35px rgba(15,23,42,.14);
+}
+
+.ticket-header {
+    position: relative;
+    background: linear-gradient(135deg, #1f2937 0%, #4b5563 55%, #6b7280 100%);
+    padding: 18px 20px;
+    letter-spacing: .4px;
+}
+
+.ticket-header::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 3px;
+    background: #d1d5db;
+}
+
+.ticket-body {
+    padding: 24px;
+    background: #fff;
+}
+
+.ticket-footer {
+    background: #f3f4f6;
+    border-top: 1px dashed #cbd5e1;
+}
+
+.seat {
+    color: #374151;
+    background: #e5e7eb;
+    padding: 6px 10px;
+    border-radius: 8px;
+}
+
+.ticket-id {
+    color: #4b5563;
+}
+
+.total-fare {
+    margin-top: 24px;
+    padding: 17px;
+    border-radius: 13px;
+    background: #1f2937;
+    color: #fff;
+    font-size: 21px;
+    box-shadow: 0 10px 20px rgba(31,41,55,.15);
+}
+
+.success-message {
+    color: #374151;
+}
+
+.creator-name {
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid #374151;
+    font-size: 14px;
+    color: #e5e7eb;
+}
+
+@media (max-width: 700px) {
+    .booking-section {
+        padding: 42px 13px 55px;
+    }
+    .booking-card {
+        padding: 28px 18px;
+        border-radius: 19px;
+    }
+    .passenger-card {
+        padding: 19px 16px;
+    }
+}
+
+
+/* ===== FINAL GRAPHITE + GREY UI ===== */
+.booking-section{
+    min-height:calc(100vh - 110px);
+    padding:64px 22px 72px;
+    background:
+      linear-gradient(135deg,#dfe2e5 0%,#f4f5f6 48%,#d6d9dc 100%);
+    position:relative;
+}
+.booking-section:before{
+    content:"";
+    display:block;
+    width:70px;
+    height:4px;
+    border-radius:99px;
+    background:#3f444a;
+    margin:0 auto 22px;
+}
+.booking-card{
+    max-width:920px;
+    margin:auto;
+    padding:42px;
+    background:rgba(250,250,250,.96);
+    border:1px solid rgba(255,255,255,.9);
+    border-radius:26px;
+    box-shadow:0 24px 60px rgba(31,35,40,.18),0 3px 10px rgba(31,35,40,.06);
+}
+.booking-card h1{
+    font-size:34px;
+    letter-spacing:-1px;
+    color:#202328;
+    margin-bottom:8px;
+}
+.subtitle{
+    color:#777c82;
+    font-size:15px;
+    margin-bottom:34px;
+}
+.booking-card form:before{
+    content:"JOURNEY DETAILS";
+    display:block;
+    font-size:11px;
+    letter-spacing:2px;
+    font-weight:800;
+    color:#6d7278;
+    margin-bottom:15px;
+}
+.form-row{
+    gap:18px;
+}
+.form-group{
+    margin-bottom:19px;
+}
+label{
+    font-size:12px;
+    letter-spacing:.3px;
+    color:#454a50;
+    margin-bottom:8px;
+}
+input,select{
+    height:49px;
+    padding:0 15px;
+    background:#f1f2f3;
+    color:#24272b;
+    border:1px solid #d4d7da;
+    border-radius:12px;
+    font-size:15px;
+    transition:.2s ease;
+    box-shadow:inset 0 1px 1px rgba(0,0,0,.025);
+}
+input:hover,select:hover{border-color:#b6bac0;background:#f6f6f7}
+input:focus,select:focus{
+    outline:none;
+    background:#fff;
+    border-color:#6b7076;
+    box-shadow:0 0 0 4px rgba(91,96,102,.10);
+}
+#passengerDetails{
+    margin-top:8px;
+}
+.passenger-card{
+    position:relative;
+    margin-top:18px;
+    padding:25px 25px 8px;
+    background:#eceeef;
+    border:1px solid #d6d9dc;
+    border-radius:18px;
+    border-left:0;
+    box-shadow:0 8px 20px rgba(30,34,38,.06);
+}
+.passenger-card:before{
+    content:"";
+    position:absolute;
+    left:0;top:0;bottom:0;
+    width:5px;
+    border-radius:18px 0 0 18px;
+    background:#4a4f55;
+}
+.passenger-card h3{
+    margin:0 0 20px;
+    color:#292d32;
+    font-size:17px;
+    letter-spacing:.2px;
+}
+.book-btn{
+    margin-top:12px;
+    height:55px;
+    border-radius:14px;
+    background:linear-gradient(135deg,#25282c,#4b5056);
+    box-shadow:0 12px 25px rgba(37,40,44,.20);
+    font-size:16px;
+    letter-spacing:.2px;
+    transition:.2s ease;
+}
+.book-btn:hover{
+    opacity:1;
+    transform:translateY(-2px);
+    box-shadow:0 16px 30px rgba(37,40,44,.25);
+}
+.book-btn:active{transform:translateY(0)}
+.result{margin-top:34px}
+.booking-summary{
+    padding:27px;
+    background:#e9eaec;
+    border:1px solid #cfd2d5;
+    border-radius:18px;
+    box-shadow:0 8px 22px rgba(31,35,40,.07);
+}
+.booking-summary h2{
+    color:#25292e;
+}
+.ticket{
+    border:1px solid #cfd3d6;
+    border-radius:18px;
+    background:#fff;
+    box-shadow:0 12px 30px rgba(31,35,40,.10);
+    transition:.2s ease;
+}
+.ticket:hover{
+    transform:translateY(-2px);
+    box-shadow:0 17px 34px rgba(31,35,40,.14);
+}
+.ticket-header{
+    background:linear-gradient(135deg,#292d32,#565b61)!important;
+    padding:18px 22px;
+    text-align:left;
+    font-size:18px;
+    letter-spacing:.2px;
+    position:relative;
+}
+.ticket-header:after{
+    content:"";
+    position:absolute;
+    left:22px;right:22px;bottom:0;
+    height:2px;
+    background:#9da2a7;
+}
+.ticket-body{padding:24px}
+.ticket-body p{color:#555a60;margin-bottom:11px}
+.ticket-body p strong{color:#292d32}
+.ticket-footer{
+    border-top:1px dashed #cdd0d3;
+    padding:17px 22px;
+    background:#f0f1f2;
+}
+.seat,.ticket-id{color:#3f444a}
+.total-fare{
+    margin-top:25px;
+    padding:17px;
+    border-radius:14px;
+    background:#292d32;
+    color:#fff!important;
+    font-size:22px;
+    box-shadow:0 10px 22px rgba(31,35,40,.16);
+}
+.success-message{
+    color:#4a5056;
+    font-size:14px;
+}
+.creator-name{
+    margin-top:15px;
+    padding-top:10px;
+    border-top:1px solid #444;
+    text-align:center;
+    font-size:14px;
+    color:#fff;
+}
+@media(max-width:700px){
+    .booking-section{padding:42px 13px 55px}
+    .booking-card{padding:29px 18px;border-radius:21px}
+    .booking-card h1{font-size:28px}
+    .form-row{flex-direction:column;gap:0}
+    .passenger-card{padding:22px 17px 7px}
+    .ticket-body{padding:19px}
+    .ticket-footer{flex-direction:column}
+}
 
     </style>
 
@@ -378,7 +1222,7 @@
     <header>
 
         <div class="logo">
-            Railway Ticket Booking
+            Railway Ticket Booking🚂
         </div>
 
 
@@ -793,16 +1637,11 @@
             }
 
         }
-
-
         /*
          * Create first passenger
          * form when page opens
          */
-
         createPassengerFields();
-
-
         /*
          * Create new passenger
          * fields when number changes
@@ -812,8 +1651,6 @@
             "change",
             createPassengerFields
         );
-
-
         /*
          * Booking form
          */
@@ -866,23 +1703,18 @@
                         )
                         .value
                     );
-
-
                 /*
                  * Check stations
                  */
 
-                if (from === to) {
+                if(from === to) {
 
                     alert(
                         "From Station and To Station cannot be the same."
                     );
 
                     return;
-
                 }
-
-
                 /*
                  * Select train automatically from route
                  * Sample data for this college project
