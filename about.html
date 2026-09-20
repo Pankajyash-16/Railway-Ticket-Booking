@@ -4,7 +4,6 @@
 <head>
 
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>About - Railway Ticket Booking</title>
@@ -22,6 +21,9 @@
             background: #e9ecef;
             color: #222;
         }
+
+
+        /* ================= HEADER ================= */
 
         header {
             background: linear-gradient(
@@ -56,54 +58,405 @@
             text-decoration: underline;
         }
 
+
+        /* ================= ABOUT BODY ================= */
+
         .about-section {
             min-height: 85vh;
-            padding: 70px 20px;
+            padding: 60px 20px 70px;
+            position: relative;
+            overflow: hidden;
         }
+
+
+        /* Background decoration */
+
+        .about-section::before {
+            content: "";
+            position: absolute;
+
+            width: 420px;
+            height: 420px;
+
+            border-radius: 50%;
+
+            background: rgba(0, 0, 0, 0.035);
+
+            top: -170px;
+            right: -120px;
+        }
+
+        .about-section::after {
+            content: "";
+            position: absolute;
+
+            width: 280px;
+            height: 280px;
+
+            border-radius: 50%;
+
+            background: rgba(0, 0, 0, 0.025);
+
+            bottom: -130px;
+            left: -100px;
+        }
+
+
+        /* Main container */
 
         .about-card {
-            max-width: 850px;
+            max-width: 1050px;
+
             margin: auto;
 
-            background: white;
+            background: #ffffff;
 
-            padding: 40px;
+            border-radius: 18px;
 
-            border-radius: 10px;
+            overflow: hidden;
 
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
+            position: relative;
+            z-index: 2;
+
+            border: 1px solid #d4d7da;
+
+            box-shadow:
+                0 18px 45px rgba(0, 0, 0, 0.11);
         }
 
-        .about-card h1 {
-            text-align: center;
+
+        /* Top dark strip */
+
+        .about-card::before {
+            content: "";
+
+            display: block;
+
+            height: 6px;
+
+            background: linear-gradient(
+                90deg,
+                #202020,
+                #666,
+                #202020
+            );
+        }
+
+
+        /* ================= INTRO ================= */
+
+        .about-intro {
+            padding: 45px 50px 35px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ffffff,
+                    #f5f6f7
+                );
+
+            border-bottom: 1px solid #ddd;
+        }
+
+
+        .about-label {
+            display: inline-block;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            letter-spacing: 2px;
+
+            color: #777;
+
+            margin-bottom: 12px;
+        }
+
+
+        .about-intro h1 {
+            font-size: 40px;
+
+            color: #202020;
+
+            line-height: 1.15;
+
+            margin-bottom: 22px;
+
+            letter-spacing: -1px;
+        }
+
+
+        .heading-line {
+            width: 75px;
+            height: 4px;
+
+            background: #d62828;
+
+            border-radius: 5px;
+
             margin-bottom: 25px;
         }
 
-        .about-card h2 {
-            margin-top: 25px;
-            margin-bottom: 10px;
+
+        .about-intro p {
+            max-width: 850px;
+
+            color: #555;
+
+            font-size: 16px;
+
+            line-height: 1.8;
+
+            margin-bottom: 13px;
         }
 
-        .about-card p {
-            color: #555;
-            line-height: 1.7;
-            margin-bottom: 15px;
+
+        /* ================= CONTENT AREA ================= */
+
+        .about-content {
+            padding: 40px 50px 50px;
         }
+
+
+        .section-heading {
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+            margin-bottom: 22px;
+        }
+
+
+        .section-number {
+            width: 38px;
+            height: 38px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            background: #252525;
+
+            color: white;
+
+            border-radius: 9px;
+
+            font-size: 14px;
+
+            font-weight: bold;
+        }
+
+
+        .section-heading h2 {
+            font-size: 24px;
+
+            color: #252525;
+        }
+
+
+        /* ================= FEATURES ================= */
 
         .features {
-            margin-top: 15px;
-            padding-left: 25px;
+            list-style: none;
+
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 14px;
+
+            margin-bottom: 45px;
         }
 
+
         .features li {
-            margin-bottom: 10px;
-            color: #555;
+            position: relative;
+
+            min-height: 62px;
+
+            display: flex;
+
+            align-items: center;
+
+            padding: 15px 18px 15px 58px;
+
+            background: #f5f6f7;
+
+            border: 1px solid #dedfe1;
+
+            border-radius: 11px;
+
+            color: #3f3f3f;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            transition: 0.25s ease;
+
+            box-shadow: 0 3px 8px rgba(0,0,0,0.03);
         }
+
+
+        .features li::before {
+            content: "✓";
+
+            position: absolute;
+
+            left: 18px;
+
+            width: 26px;
+            height: 26px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            background: #292929;
+
+            color: white;
+
+            border-radius: 50%;
+
+            font-size: 13px;
+        }
+
+
+        .features li:hover {
+            background: #ffffff;
+
+            transform: translateY(-4px);
+
+            border-color: #bcbcbc;
+
+            box-shadow:
+                0 10px 22px rgba(0,0,0,0.09);
+        }
+
+
+        /* ================= TECHNOLOGIES ================= */
+
+        .technology-section {
+            margin-top: 5px;
+
+            margin-bottom: 45px;
+        }
+
+
+        .technology-list {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 16px;
+        }
+
+
+        .technology-box {
+            background: #292929;
+
+            color: white;
+
+            padding: 25px 20px;
+
+            border-radius: 12px;
+
+            min-height: 155px;
+
+            border: 1px solid #444;
+
+            transition: 0.25s ease;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+
+        .technology-box::after {
+            content: "";
+
+            position: absolute;
+
+            width: 80px;
+            height: 80px;
+
+            border-radius: 50%;
+
+            background: rgba(255,255,255,0.04);
+
+            right: -25px;
+            bottom: -25px;
+        }
+
+
+        .technology-box:hover {
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 12px 25px rgba(0,0,0,0.15);
+        }
+
+
+        .technology-box h3 {
+            font-size: 20px;
+
+            margin-bottom: 13px;
+
+            color: #ffffff;
+        }
+
+
+        .technology-box p {
+            color: #d5d5d5;
+
+            font-size: 14px;
+
+            line-height: 1.65;
+        }
+
+
+        /* ================= PURPOSE ================= */
+
+        .purpose-box {
+            background: #f2f3f4;
+
+            border-radius: 13px;
+
+            border: 1px solid #d8dadd;
+
+            border-left: 6px solid #d62828;
+
+            padding: 25px 28px;
+
+            box-shadow:
+                0 7px 18px rgba(0,0,0,0.06);
+        }
+
+
+        .purpose-box p {
+            color: #505050;
+
+            line-height: 1.8;
+
+            font-size: 16px;
+        }
+
+
+        /* ================= FOOTER ================= */
 
         footer {
             background: #222;
+
             color: white;
+
             text-align: center;
+
             padding: 20px;
         }
 
@@ -111,20 +464,98 @@
             margin: 5px;
         }
 
+
+        .creator-name {
+            margin-top: 15px;
+
+            padding-top: 10px;
+
+            border-top: 1px solid #555;
+
+            text-align: center;
+
+            font-size: 16px;
+
+            color: #ffffff;
+        }
+
+
+        /* ================= MOBILE ================= */
+
         @media (max-width: 700px) {
 
             header {
                 padding: 18px 20px;
+
                 flex-direction: column;
+
                 gap: 15px;
             }
+
 
             nav a {
                 margin: 0 8px;
             }
 
-            .about-card {
-                padding: 25px 20px;
+
+            .about-section {
+                padding: 35px 14px 50px;
+            }
+
+
+            .about-intro {
+                padding: 32px 22px;
+            }
+
+
+            .about-intro h1 {
+                font-size: 30px;
+            }
+
+
+            .about-intro p {
+                font-size: 15px;
+            }
+
+
+            .about-content {
+                padding: 32px 22px 38px;
+            }
+
+
+            .section-heading h2 {
+                font-size: 21px;
+            }
+
+
+            .features {
+                grid-template-columns: 1fr;
+
+                gap: 12px;
+
+                margin-bottom: 35px;
+            }
+
+
+            .technology-list {
+                grid-template-columns: 1fr;
+
+                gap: 12px;
+            }
+
+
+            .technology-box {
+                min-height: auto;
+            }
+
+
+            .purpose-box {
+                padding: 21px;
+            }
+
+
+            .purpose-box p {
+                font-size: 15px;
             }
 
         }
@@ -136,6 +567,8 @@
 
 <body>
 
+
+    <!-- ================= HEADER ================= -->
 
     <header>
 
@@ -150,6 +583,7 @@
             <a href="booking.html">Book Ticket</a>
 
             <a href="about.html">About</a>
+
             <a href="help.html">Help</a>
 
         </nav>
@@ -157,106 +591,196 @@
     </header>
 
 
+    <!-- ================= BODY ================= -->
+
     <section class="about-section">
 
         <div class="about-card">
 
-            <h1>
-                About Railway Ticket Booking
-            </h1>
+
+            <!-- INTRO -->
+
+            <div class="about-intro">
+
+                <span class="about-label">
+                    ABOUT THE PROJECT
+                </span>
+
+                <h1>
+                    About Railway Ticket Booking
+                </h1>
+
+                <div class="heading-line"></div>
+
+                <p>
+                    Railway Ticket Booking Simulation is a
+                    first-year Web Designing mini project.
+                </p>
+
+                <p>
+                    This project is developed using HTML,
+                    CSS and JavaScript. It provides a simple
+                    interface for railway ticket booking.
+                </p>
+
+            </div>
 
 
-            <p>
-                Railway Ticket Booking Simulation is a
-                first-year Web Designing mini project.
-            </p>
+            <!-- CONTENT -->
+
+            <div class="about-content">
 
 
-            <p>
-                This project is developed using HTML,
-                CSS and JavaScript. It provides a simple
-                interface for railway ticket booking.
-            </p>
+                <!-- FEATURES -->
+
+                <div class="section-heading">
+
+                    <div class="section-number">
+                        01
+                    </div>
+
+                    <h2>
+                        Project Features
+                    </h2>
+
+                </div>
 
 
-            <h2>
-                Project Features
-            </h2>
+                <ul class="features">
+
+                    <li>
+                        Railway ticket booking form
+                    </li>
+
+                    <li>
+                        Passenger information
+                    </li>
+
+                    <li>
+                        Journey date selection
+                    </li>
+
+                    <li>
+                        Travel class selection
+                    </li>
+
+                    <li>
+                        Fare calculation
+                    </li>
+
+                    <li>
+                        PNR number generation
+                    </li>
+
+                    <li>
+                        Booking confirmation
+                    </li>
+
+                </ul>
 
 
-            <ul class="features">
+                <!-- TECHNOLOGIES -->
 
-                <li>
-                    Railway ticket booking form
-                </li>
+                <div class="technology-section">
 
-                <li>
-                    Passenger information
-                </li>
+                    <div class="section-heading">
 
-                <li>
-                    Journey date selection
-                </li>
+                        <div class="section-number">
+                            02
+                        </div>
 
-                <li>
-                    Travel class selection
-                </li>
+                        <h2>
+                            Technologies Used
+                        </h2>
 
-                <li>
-                    Fare calculation
-                </li>
-
-                <li>
-                    PNR number generation
-                </li>
-
-                <li>
-                    Booking confirmation
-                </li>
-
-            </ul>
+                    </div>
 
 
-            <h2>
-                Technologies Used
-            </h2>
+                    <div class="technology-list">
 
 
-            <p>
-                <strong>HTML:</strong>
-                Used to create the structure of the website.
-            </p>
+                        <div class="technology-box">
+
+                            <h3>
+                                HTML
+                            </h3>
+
+                            <p>
+                                Used to create the structure
+                                of the website.
+                            </p>
+
+                        </div>
 
 
-            <p>
-                <strong>CSS:</strong>
-                Used for designing, layout and colours.
-            </p>
+                        <div class="technology-box">
+
+                            <h3>
+                                CSS
+                            </h3>
+
+                            <p>
+                                Used for designing, layout
+                                and colours.
+                            </p>
+
+                        </div>
 
 
-            <p>
-                <strong>JavaScript:</strong>
-                Used to add booking functionality,
-                fare calculation and PNR generation.
-            </p>
+                        <div class="technology-box">
+
+                            <h3>
+                                JavaScript
+                            </h3>
+
+                            <p>
+                                Used to add booking functionality,
+                                fare calculation and PNR generation.
+                            </p>
+
+                        </div>
 
 
-            <h2>
-                Project Purpose
-            </h2>
+                    </div>
+
+                </div>
 
 
-            <p>
-                The purpose of this project is to
-                demonstrate basic web designing concepts
-                and JavaScript functionality through a
-                railway ticket booking simulation.
-            </p>
+                <!-- PURPOSE -->
+
+                <div class="section-heading">
+
+                    <div class="section-number">
+                        03
+                    </div>
+
+                    <h2>
+                        Project Purpose
+                    </h2>
+
+                </div>
+
+
+                <div class="purpose-box">
+
+                    <p>
+                        The purpose of this project is to
+                        demonstrate basic web designing concepts
+                        and JavaScript functionality through a
+                        railway ticket booking simulation.
+                    </p>
+
+                </div>
+
+
+            </div>
 
         </div>
 
     </section>
 
+
+    <!-- ================= FOOTER ================= -->
 
     <footer>
 
@@ -267,9 +791,10 @@
         <p>
             B.Tech First Year Mini Project
         </p>
+
         <div class="creator-name">
-    Designed & Developed by: Pankaj Ahirwar
-</div>
+            Designed & Developed by: Pankaj Ahirwar
+        </div>
 
     </footer>
 
